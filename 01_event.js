@@ -1,42 +1,41 @@
-
 const EventEmitter = require('events');
 
 const myEmitter = new EventEmitter();
 
-                    
+function showName(name){
+console.log(`Your Name is : ${name}`);
+}
 
-myEmitter.on("name",()=>{
-    console.log("My name is John Doe");
-})
-
-
-myEmitter.on("name",(yourName)=>{
-    console.log(`My name is ${yourName}`);
-})
+function showAge(age){
+console.log(`Your Age is : ${age}`);
+}
 
 
+myEmitter.on('userInfo',showName);
+myEmitter.on('userInfo',showAge);
 
-
-
-myEmitter.emit("name");
+myEmitter.emit('userInfo','John Doe');
+myEmitter.emit('userInfo',30);
 
 
 
-/* EventEmitter → stores events
-.on() → registers listener
-.emit() → announces event
-Event Loop → executes listener code
+// Output:
+/*
+ Your Name is : John Doe
+Your Age is : John Doe
+Your Name is : 30
+Your Age is : 30
  */
 
+// We will remove the showname Listener so only your age is : ${value} will be printed
 
-myEmitter.on("age",(age)=>{
-    console.log(`Your age is : ${age}`);
-   
-})
+myEmitter.off('userInfo',showName);
+myEmitter.emit('userInfo','John Doe');
+myEmitter.emit('userInfo',30);
 
-  myEmitter.emit("age",25);
 
-myEmitter.emit("name",15);
-myEmitter.removeAllListeners("name");
-myEmitter.emit("name"); // No output since listeners are removed
-  myEmitter.emit("age",25); 
+// OutPut 
+/*
+ Your Age is : John Doe
+Your Age is : 30
+ */
