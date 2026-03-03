@@ -1,4 +1,4 @@
-const chat = require('./chatRoom.js');
+/* const chat = require('./chatRoom.js');
 
 
 chat.on('userJoined', (user) => {
@@ -17,4 +17,4 @@ chat.on('userLeft', (user) => {
 
 chat.join("Alice");
 chat.sendMeassage("Alice", "Hello everyone!");
-chat.leave("Alice");
+chat.leave("Alice"); */
